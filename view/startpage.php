@@ -25,7 +25,7 @@
               </form>
               <div id='register'>
                 <form action='index.php' method = 'post'>
-                  <input type='hidden' name='register' value = register>
+                  <input type='hidden' name='register' value = 'register'>
                   <input type='submit' value='registrera ny användare'>
                 </form>
             </div>

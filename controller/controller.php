@@ -27,13 +27,31 @@
       //Här ska registeringsbehandling initialt ske. en registeringssida ska
       //retuneras.
       $registerpage = new Registerpage();
+      if (isset($_POST["register"]) && isset($_POST["username"]) &&
+      isset($_POST["firstname"]) && isset($_POST["lastname"]) &&
+      isset($_POST["email"]) && isset($_POST["passw_1"]) &&
+      isset($_POST["passw_2"])) {
+        //skicka skiten till model.
+        //$check = databasfunktionen
+        $check = False; //Här kommer true eller false bli av model sen.
+      }
+      else {
+        $check = False;
+      }
+
+      if ($check == True) {
+        $html = "Du är registerad";
+
+      }
+      else {
       $html = $registerpage -> build_page();
+
+      }
       return $html;
     }
 
     function html() {
       //sen; anropa modell. checkloged in. om in, anropa loged n wiev. hela sidan.ny fil.
-
 
       if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 

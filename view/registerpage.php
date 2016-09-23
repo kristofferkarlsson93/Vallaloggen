@@ -15,7 +15,7 @@
             <div id ='center_div'>
               <h1>Registera dig</h1><br>
               <div id='register_form'>
-                <form action = ? methos = 'post'>
+                <form action = ? method = 'post'>
                   <input type='text' name='username' placeholder='Användarnamn'>
                   </br>
                   <input type='text' name='firstname' placeholder='Förnamn'>
@@ -26,6 +26,7 @@
                   <input type='password' name='passw_1' placeholder='Lösenord'>
                   </br>
                   <input type='password' name='passw_2' placeholder='Upprepa lösenord'>
+                  <input type='hidden' name='register' value='register'>
                   </br>
                   <input type='submit' value = 'Registera dig'>
                 </form>
