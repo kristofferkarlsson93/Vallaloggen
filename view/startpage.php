@@ -2,7 +2,17 @@
 
   class Startpage
   {
+    //du kanske vill ha denna i superwebpagefile.php
+    function isPOST(){
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+          return true;
+        }else{
+          return false;
+        }
+    }
+    function isTryingToLogin(){
 
+    }
     function build_page() {
       return "
       <!DOCTYPE html>
