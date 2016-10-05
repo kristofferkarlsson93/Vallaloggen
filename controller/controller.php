@@ -2,19 +2,21 @@
   include ("model/model.php");
   include ("view/startpage.php");
   include ("view/registerpage.php");
+  include ("view/searchview.php");
   Class Controller {
-    private $startpage;
-    private $registerpage;
+
     function __construct(){
       //såhär brukar jag göra klass objekt
       $this->startpage = new Startpage("Vallaloggen");
       $this->registerpage = new Registerpage();
+      $this->searchview = new Searchview();
     }
     function login($username, $passw) {
       //skicka in username och password till model.php och gör checken där
       if (strlen($username)> 0 && strlen($passw) > 0) {
         //Här ska databasanrop och return av ny html-sida ske
-        return "Sidan för inloggade";
+        return "Sidan för inloggade
+        $username, $passw";
       }
       else {
         $html = $this->startpage->build_page();
@@ -23,11 +25,13 @@
 
     }
 
-    function search($temp_type, $temp, $air_hum, $snow_type) {
+    function search() {
       //Skicka värdena till modell som kollar om det är korrekt inskrivet
       // Sen skickar model till database_commands som anropar databasen
-      //Här ska uttag ur databasen göras senare och en html-sida med
-      //resultat returneras.
+      $temp_type = $this->searchview->get_temp_type();
+      $temp = $this->searchview->get_temp();
+      $air_hum = $this->searchview->get_air_hum();
+      $snow_type = $this->searchview->get_snow_type();
       return "Söksidan";
     }
 
@@ -38,13 +42,15 @@
       // detta ska kollas i view
       //Sen kan du inte i register() kolla om du klickat på den knappen för denna
       // functionen kallas bara när du klickar på register knappen från startsidan
-      if (isset($_POST["register"]) && isset($_POST["username"]) &&
-      isset($_POST["firstname"]) && isset($_POST["lastname"]) &&
-      isset($_POST["email"]) && isset($_POST["passw_1"]) &&
-      isset($_POST["passw_2"])) {
+      if ($this->registerpage->try_register()) {
         //skicka skiten till model.
+        $username = $this->registerpage->get_username();
+        $firstname = $this->registerpage->get_firstname();
+        $lastname = $this->registerpage->get_lastname();
+        $passw_1 = $this->registerpage->get_passw_1();
+        $passw_2 = $this->registerpage->get_passw_2();
         //$check = databasfunktionen
-        $check = False; //Här kommer true eller false bli av model sen.
+        $check = True; //Här kommer true eller false bli av model sen.
       }
       else {
         $check = False;
@@ -65,28 +71,18 @@
       //1: kolla om en post har skett
       if($this->startpage->isPOST()){
         //1: kolla om du förösker logga in
-          //bryt ut denna if till startpage
-        if (isset($_POST["username"]) && isset($_POST["passw"])) {
-          //hämta username och password från view (typ från startpage). ex: $username = $this->startpage->getUsername som retunerar $_POST["username"]
-          $username = $_POST["username"];
-          $passw = $_POST["passw"];
-
+        if ($this->startpage->try_login()) {
+          $username = $this->startpage->get_username();
+          $passw = $this->startpage->get_password();
           $html = $this->login($username, $passw);
         }
-        //2: kolla denna if i view
-        elseif (isset($_POST["temp_type"]) && isset($_POST["temperature"]) &&
-          isset($_POST["air_humidity"]) && isset($_POST["snow_type"])) {
-            //hämta dessa posts värden från view
-          $temp_type = $_POST["temp_type"];
-          $temp = $_POST["temperature"];
-          $air_hum = $_POST["air_humidity"];
-          $snow_type = $_POST["snow_type"];
-
-          $html = $this->search($temp_type, $temp, $air_hum, $snow_type);
+        //2: kolla om sökning skett.
+        elseif ($this->searchview->try_search())  {
+          $html = $this->search();
         }
         //3: kolla om du ska visa registersidan
-          //även denna if i view
-        elseif (isset($_POST["register"])) {
+          //
+        elseif ($this->registerpage->would_register()) {
           $html = $this->register();
         }
         //4: kolla om du försöker registrera

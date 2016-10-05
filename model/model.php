@@ -6,7 +6,7 @@
     function __construct(){
       //såhär burkar jag göra klass objekt
       //du kommer åt den överallt i klassen genom att skriva $database_commands->method();
-      $database_commands = new database_commands();
+      $database_commands = new Database_commands();
     }
     function check_loged_in() {
       //kolla session om inloggad

@@ -6,13 +6,28 @@
     function isPOST(){
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           return true;
+
         }else{
           return false;
         }
     }
-    function isTryingToLogin(){
 
+    function try_login() {
+      if (isset($_POST["username"]) && isset($_POST["passw"])) {
+        return true;
+      }else{
+        return false;
+      }
     }
+
+    function get_username() {
+      return $_POST["username"];
+    }
+
+    function get_password() {
+      return $_POST["passw"];
+    }
+
     function build_page() {
       return "
       <!DOCTYPE html>

@@ -2,6 +2,49 @@
 
   class Registerpage {
 
+
+    function would_register() {
+      if (isset($_POST["register"])) {
+      return true;
+      }else {
+        return false;
+      }
+    }
+
+    function try_register() {
+      if (isset($_POST["username"]) && isset($_POST["firstname"]) &&
+      isset($_POST["lastname"]) && isset($_POST["email"])
+      && isset($_POST["passw_1"]) && isset($_POST["passw_2"])) {
+        return true;
+      }else {
+        return false;
+      }
+    }
+
+    function get_username() {
+      return $_POST["username"];
+    }
+
+    function get_firstname() {
+      return $_POST["firstname"];
+    }
+
+    function get_lastname() {
+      return $_POST["lastname"];
+    }
+
+    function get_mail() {
+      return $_POST["email"];
+    }
+
+    function get_passw_1() {
+      return $_POST["passw_1"];
+    }
+
+    function get_passw_2() {
+      return $_POST["passw_2"];
+    }
+
     function build_page() {
       return "
       <!DOCTYPE html>
