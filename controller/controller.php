@@ -3,14 +3,17 @@
   include ("view/startpage.php");
   include ("view/registerpage.php");
   include ("view/searchview.php");
+
+
   Class Controller {
 
     function __construct(){
-      //såhär brukar jag göra klass objekt
       $this->startpage = new Startpage("Vallaloggen");
       $this->registerpage = new Registerpage();
       $this->searchview = new Searchview();
+      $this->model = new Model();
     }
+
     function login($username, $passw) {
       //skicka in username och password till model.php och gör checken där
       if (strlen($username)> 0 && strlen($passw) > 0) {
@@ -39,7 +42,6 @@
       //Här ska registeringsbehandling initialt ske. en registeringssida ska
       //retuneras.
 
-      // detta ska kollas i view
       //Sen kan du inte i register() kolla om du klickat på den knappen för denna
       // functionen kallas bara när du klickar på register knappen från startsidan
       if ($this->registerpage->try_register()) {
@@ -47,9 +49,11 @@
         $username = $this->registerpage->get_username();
         $firstname = $this->registerpage->get_firstname();
         $lastname = $this->registerpage->get_lastname();
+        $mail = $this->registerpage->get_mail();
         $passw_1 = $this->registerpage->get_passw_1();
         $passw_2 = $this->registerpage->get_passw_2();
-        //$check = databasfunktionen
+        $check = $this->model->register_user($username, $firstname, $lastname,
+         $mail, $passw_1, $passw_2);
         $check = True; //Här kommer true eller false bli av model sen.
       }
       else {
