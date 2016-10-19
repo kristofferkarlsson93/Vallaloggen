@@ -59,16 +59,16 @@
               <h1>Registera dig</h1><br>
               <div id='register_form'>
                 <form action = ? method = 'post'>
-                  <input type='text' name='username' placeholder='Användarnamn'>
+                  <input type='text' name='username' value='Användarnamn'>
                   </br>
-                  <input type='text' name='firstname' placeholder='Förnamn'>
-                  <input type='text' name='lastname' placeholder='Efternamn'>
+                  <input type='text' name='firstname' value='Förnamn'>
+                  <input type='text' name='lastname' value='Efternamn'>
                   </br>
-                  <input type='email' name='email' placeholder='E-post'>
+                  <input type='email' name='email' value='E-post@gmail.com'>
                   </br>
-                  <input type='password' name='passw_1' placeholder='Lösenord'>
+                  <input type='password' name='passw_1' value='Lösenord'>
                   </br>
-                  <input type='password' name='passw_2' placeholder='Upprepa lösenord'>
+                  <input type='password' name='passw_2' value='Upprepa lösenord'>
                   <input type='hidden' name='register' value='register'>
                   </br>
                   <input type='submit' value = 'Registera dig'>
