@@ -1,6 +1,6 @@
 
 todo:
-  * Make git ignore
+  * Make git ignore X
   * hash password
   * put user in db
   * start building page to add new products
