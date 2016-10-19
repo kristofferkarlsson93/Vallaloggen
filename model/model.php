@@ -6,7 +6,7 @@
     function __construct(){
       //såhär burkar jag göra klass objekt
       //du kommer åt den överallt i klassen genom att skriva $database_commands->method();
-      $database_commands = new Database_commands();
+      $this->database_commands = new Database_commands();
     }
 
     function register_user($username, $firstname, $lastname, $mail, $passw_1,
@@ -19,7 +19,7 @@
     }
 
     private function match_passwords($passw_1, $passw_2) {
-      if (passw_1 == passw_2) {
+      if ($passw_1 == $passw_2) {
         return true;
       }else {
         return false;
@@ -27,9 +27,10 @@
     }
 
     private function check_username($username) {
+      echo "$username";
       $users_with_name = $this->database_commands->get_username_by_username($username);
-      var_dump($users_with_name);
-      if ($users_with_name > 0) {
+      echo sizeof($users_with_name);
+      if (sizeof($users_with_name) > 0) {
         return false;
       }else {
         return true;
