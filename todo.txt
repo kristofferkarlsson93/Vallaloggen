@@ -4,4 +4,3 @@ todo:
   * hash password
   * put user in db
   * start building page to add new products
-  
