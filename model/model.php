@@ -13,11 +13,17 @@
     $passw_2) {
       if ($this->check_username($username)) {
         if ($this->match_passwords($passw_1, $passw_2)) {
+          echo "bajs";
+          $hashed_pass = $this->hash_password($passw_1);
 
         }
       }
     }
 
+    private function hash_password($password) {
+      $hashed_passw = password_hash($password, PASSWORD_BCRYPT, array (
+      "cost" => 12));
+    }
     private function match_passwords($passw_1, $passw_2) {
       if ($passw_1 == $passw_2) {
         return true;
@@ -27,7 +33,6 @@
     }
 
     private function check_username($username) {
-      echo "$username";
       $users_with_name = $this->database_commands->get_username_by_username($username);
       echo sizeof($users_with_name);
       if (sizeof($users_with_name) > 0) {
