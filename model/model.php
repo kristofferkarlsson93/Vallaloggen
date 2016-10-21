@@ -24,6 +24,7 @@
       $hashed_passw = password_hash($password, PASSWORD_BCRYPT, array (
       "cost" => 12));
     }
+
     private function match_passwords($passw_1, $passw_2) {
       if ($passw_1 == $passw_2) {
         return true;
