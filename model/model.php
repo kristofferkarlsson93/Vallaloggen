@@ -14,10 +14,8 @@
       if ($this->check_username($username)) {
         if ($this->match_passwords($passw_1, $passw_2)) {
           $hashed_pass = $this->hash_password($passw_1);
-          $mydate=getdate(date("U"));
-          $reg_date = "$mydate[weekday]. $mydate[month]. $mydate[mday]. $mydate[year]";
           $this->database_commands->add_user($username, $firstname,
-          $lastname, $mail, $hashed_pass, $reg_date);
+          $lastname, $mail, $hashed_pass);
 
         }
       }
@@ -26,6 +24,7 @@
     private function hash_password($password) {
       $hashed_passw = password_hash($password, PASSWORD_BCRYPT, array (
       "cost" => 12));
+      return $hashed_passw;
     }
 
     private function match_passwords($passw_1, $passw_2) {
