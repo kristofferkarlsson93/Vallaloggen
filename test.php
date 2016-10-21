@@ -1,8 +1,9 @@
 <?php
 
-echo password_hash("password", PASSWORD_BCRYPT, array ("cost" => 12));
+$reg_date=getdate(date("U"));
 
+$test = "$mydate[weekday]. $mydate[month]. $mydate[mday]. $mydate[year]";
 
-
+echo "$test"
 
 ?>

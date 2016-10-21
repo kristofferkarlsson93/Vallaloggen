@@ -13,8 +13,11 @@
     $passw_2) {
       if ($this->check_username($username)) {
         if ($this->match_passwords($passw_1, $passw_2)) {
-          echo "bajs";
           $hashed_pass = $this->hash_password($passw_1);
+          $mydate=getdate(date("U"));
+          $reg_date = "$mydate[weekday]. $mydate[month]. $mydate[mday]. $mydate[year]";
+          $this->database_commands->add_user($username, $firstname,
+          $lastname, $mail, $hashed_pass, $reg_date);
 
         }
       }
