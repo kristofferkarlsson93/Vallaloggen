@@ -7,3 +7,4 @@ todo:
   * take care of registerd user so they can logg in
   * Create loged in startpage
   * start building page to add new products
+  * Add a short read me
