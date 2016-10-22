@@ -3,6 +3,8 @@
   include ("view/startpage.php");
   include ("view/registerpage.php");
   include ("view/searchview.php");
+  include ("view/logged_in_startpage.php");
+  include ("view/confirm_reg.php");
 
 
   Class Controller {
@@ -12,6 +14,8 @@
       $this->registerpage = new Registerpage();
       $this->searchview = new Searchview();
       $this->model = new Model();
+      $this->logged_in_startpage = new logged_in_startpage();
+      $this->confirm_reg = new Confirm_reg();
     }
 
     function login($username, $passw) {
@@ -55,7 +59,7 @@
        }
 
       if ($check == true) {
-        $html = "Du är registerad";
+        $html = $this->confirm_reg->build_page(); //Ersätt med nya loged in sidan.
 
       }
       else {
