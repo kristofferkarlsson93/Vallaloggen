@@ -16,9 +16,10 @@
           $hashed_pass = $this->hash_password($passw_1);
           $this->database_commands->add_user($username, $firstname,
           $lastname, $mail, $hashed_pass);
-
+          return true;
         }
       }
+      return false;
     }
 
     private function hash_password($password) {
@@ -37,7 +38,6 @@
 
     private function check_username($username) {
       $users_with_name = $this->database_commands->get_username_by_username($username);
-      echo sizeof($users_with_name);
       if (sizeof($users_with_name) > 0) {
         return false;
       }else {

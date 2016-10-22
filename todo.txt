@@ -2,5 +2,7 @@
 todo:
   * Make git ignore X
   * hash password X
-  * put user in db
+  * put user in db X
+  + What happens if username is taken, or passw not matches?
+  * What happends when registered?
   * start building page to add new products

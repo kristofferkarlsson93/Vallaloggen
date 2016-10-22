@@ -39,11 +39,6 @@
     }
 
     function register () {
-      //Här ska registeringsbehandling initialt ske. en registeringssida ska
-      //retuneras.
-
-      //Sen kan du inte i register() kolla om du klickat på den knappen för denna
-      // functionen kallas bara när du klickar på register knappen från startsidan
       if ($this->registerpage->try_register()) {
         //skicka skiten till model.
         $username = $this->registerpage->get_username();
@@ -52,20 +47,19 @@
         $mail = $this->registerpage->get_mail();
         $passw_1 = $this->registerpage->get_passw_1();
         $passw_2 = $this->registerpage->get_passw_2();
+
         $check = $this->model->register_user($username, $firstname, $lastname,
          $mail, $passw_1, $passw_2);
-        $check = True; //Här kommer true eller false bli av model sen.
-      }
-      else {
-        $check = False;
-      }
+       }else {
+         $check = false;
+       }
 
-      if ($check == True) {
+      if ($check == true) {
         $html = "Du är registerad";
 
       }
       else {
-      $html = $this->registerpage -> build_page();
+      $html = $this->registerpage->build_page();
 
       }
       return $html;
