@@ -20,11 +20,11 @@
 
     function login($username, $passw) {
       //skicka in username och password till model.php och gör checken där
-      if (strlen($username)> 0 && strlen($passw) > 0) {
+      //Kolla upp klamrarna här sen.
         //Här ska databasanrop och return av ny html-sida ske
-        return "Sidan för inloggade
+        if ($this->model->check_user_info($username, $passw))
+          return "Sidan för inloggade
         $username, $passw";
-      }
       else {
         $html = $this->startpage->build_page();
         return $html;

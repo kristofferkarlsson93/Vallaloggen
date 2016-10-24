@@ -4,7 +4,8 @@ todo:
   * hash password X
   * put user in db X
   * What happens if username is taken, or passw not matches? X
-  * take care of registerd user so they can logg in
+  * take care of registerd user so they can logg in X
+  * Fix log in function, using db. 
   * Create loged in startpage
   * start building page to add new products
-  * Add a short read me
+  * Add a short read me X
