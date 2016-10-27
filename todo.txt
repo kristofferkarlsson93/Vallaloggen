@@ -5,7 +5,8 @@ todo:
   * put user in db X
   * What happens if username is taken, or passw not matches? X
   * take care of registerd user so they can logg in X
-  * Fix log in function, using db. 
-  * Create loged in startpage
+  * Fix log in function, using db. X
+  * Create loged in startpage (temporary) X
+  * Researsh and implement sessions för the loged in view. 
   * start building page to add new products
   * Add a short read me X

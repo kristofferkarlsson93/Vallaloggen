@@ -20,8 +20,8 @@
 
     function login($username, $passw) {
       if ($this->model->check_user_info($username, $passw)){
-        return "Sidan för inloggade
-        $username, $passw";
+        $html = $this->logged_in_startpage->build_page();
+        return $html;
       }else {
         $html = $this->startpage->build_page();
         return $html;

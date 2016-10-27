@@ -12,7 +12,8 @@ class Confirm_reg {
       <body>
         <h3>Nu kan du logga in via <a href='index.php'>startsidan</a> </h3>
 
-      </body>";
+      </body>
+    </html>";
   }
 }
 
