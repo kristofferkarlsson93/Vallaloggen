@@ -20,6 +20,8 @@
 
     function login($username, $passw) {
       if ($this->model->check_user_info($username, $passw)){
+        $_SESSION["logged_in"] = True;
+        var_dump($_SESSION['logged_in']);
         $html = $this->logged_in_startpage->build_page();
         return $html;
       }else {
@@ -41,7 +43,6 @@
 
     function register () {
       if ($this->registerpage->try_register()) {
-        //skicka skiten till model.
         $username = $this->registerpage->get_username();
         $firstname = $this->registerpage->get_firstname();
         $lastname = $this->registerpage->get_lastname();
@@ -67,9 +68,8 @@
     }
 
     function html() {
-      //1: kolla om en post har skett
       if($this->startpage->isPOST()){
-        //1: kolla om du förösker logga in
+        var_dump($_SESSION['logged_in']);
         if ($this->startpage->try_login()) {
           $username = $this->startpage->get_username();
           $passw = $this->startpage->get_password();
