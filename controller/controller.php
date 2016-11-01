@@ -68,7 +68,6 @@
 
     function html() {
       if($this->startpage->isPOST()){
-        var_dump($_SESSION['logged_in']);
         if ($this->startpage->try_login()) {
           $username = $this->startpage->get_username();
           $passw = $this->startpage->get_password();

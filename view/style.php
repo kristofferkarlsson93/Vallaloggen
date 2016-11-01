@@ -23,7 +23,7 @@ a{
 
 input[type=submit]{
   background-color:;
-  font-size: 24px;
+  font-size: 20px;
   margin: 0 auto;
   cursor:pointer;
 
@@ -32,6 +32,7 @@ input[type=submit]{
 #center_div{
   margin: 0 auto;
   width: 75%;
+  text-align: center;
 }
 
 #login_div{
@@ -41,7 +42,7 @@ input[type=submit]{
 }
 
 #search{
-  width: 500px;
+  width: 42%;
   margin: 0 auto;
 }
 

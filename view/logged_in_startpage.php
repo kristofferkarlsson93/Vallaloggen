@@ -14,23 +14,11 @@ class Logged_in_startpage {
       </head>
       <body>
         <div id='container'>
-          <div id='login_div'>
-            <h3>Logga in</h3>
-            <form action='index.php' method='post'>
-              <input type='text' name='username' placeholder='användarnamn'>
-              </br>
-              <input type='password' name='passw' placeholder ='lösenord'>
-              </br>
-              <input type='submit' value='Logga in'>
-            </form>
-            <div id='register'>
-              <form action='index.php' method = 'post'>
-                <input type='hidden' name='register' value = 'register'>
-                <input type='submit' value='registrera ny användare'>
-              </form>
+        <div id='add_report_button'>
+          <form action='action=index.php'>
+            <input type='hidden' name='add_report' value='add_report'>
+            <input type='submit' value='Lägg till vallarapport'>
           </div>
-          </div>
-
           <div id='center_div'>
             </br></br>
             <h2>Inloggad vy </h2>
@@ -80,8 +68,8 @@ class Logged_in_startpage {
 
               </form>
 
-            </div>
-          </div
+          </div>
+        </div
         </div>
         </body>
     </html>";
