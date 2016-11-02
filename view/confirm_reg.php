@@ -9,6 +9,7 @@ class Confirm_reg {
       <head>
         <meta charset='UTF-8'>
         <title>Du är registerad</title>
+      </head>
       <body>
         <h3>Nu kan du logga in via <a href='index.php'>startsidan</a> </h3>
 

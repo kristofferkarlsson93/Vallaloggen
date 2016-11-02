@@ -15,9 +15,10 @@ class Logged_in_startpage {
       <body>
         <div id='container'>
         <div id='add_report_button'>
-          <form action='action=index.php'>
+          <form action='index.php' method='post'>
             <input type='hidden' name='add_report' value='add_report'>
             <input type='submit' value='Lägg till vallarapport'>
+          </form>
           </div>
           <div id='center_div'>
             </br></br>

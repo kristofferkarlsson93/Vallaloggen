@@ -5,6 +5,7 @@
   include ("view/searchview.php");
   include ("view/logged_in_startpage.php");
   include ("view/confirm_reg.php");
+  include ("view/add_report.php");
 
 
   Class Controller {
@@ -16,6 +17,7 @@
       $this->model = new Model();
       $this->logged_in_startpage = new logged_in_startpage();
       $this->confirm_reg = new Confirm_reg();
+      $this->add_report = new Add_report();
     }
 
     function login($username, $passw) {
@@ -77,26 +79,21 @@
         elseif ($this->searchview->try_search())  {
           $html = $this->search();
         }
-        //3: kolla om du ska visa registersidan
-          //
         elseif ($this->registerpage->would_register()) {
           $html = $this->register();
         }
-        //4: kolla om du försöker registrera
-          //du lär behöva en check här sen
-
-        //5: annars startsidan/loginsida
+        elseif ($this->add_report->would_add_report()) {
+          $html = $this->add_report->build_page();
+        }
         else {
           $startpage = new Startpage("Vallaloggen");
           $html = $startpage->build_page();
         }
       }else {
-        //retunerar startsida/loginsidan ifallingen post har skett
         $startpage = new Startpage("Vallaloggen");
         $html = $startpage->build_page();
         return $html;
       }
-      // retunera html till index som echo ut skitN
       return $html;
     }
   }
