@@ -6,6 +6,7 @@
   include ("view/logged_in_startpage.php");
   include ("view/confirm_reg.php");
   include ("view/add_report.php");
+  include ("model/sessions.php");
 
 
   Class Controller {
@@ -18,11 +19,12 @@
       $this->logged_in_startpage = new logged_in_startpage();
       $this->confirm_reg = new Confirm_reg();
       $this->add_report = new Add_report();
+      $this->sessions = new Sessions();
     }
 
     function login($username, $passw) {
       if ($this->model->check_user_info($username, $passw)){
-        $_SESSION["logged_in"] = true;
+        $this->sessions->set_logged_in();
         $html = $this->logged_in_startpage->build_page();
         return $html;
       }else {
@@ -69,31 +71,38 @@
     }
 
     function html() {
-      if($this->startpage->isPOST()){
-        if ($this->startpage->try_login()) {
-          $username = $this->startpage->get_username();
-          $passw = $this->startpage->get_password();
-          $html = $this->login($username, $passw);
+      if ($this->sessions->check_logged_in()) {
+        if($this->startpage->isPOST()){
+          if($this->add_report->would_add_report()){
+              $html = $this->add_report->build_page();
+          }//if post[logout}
+            //model->lougout som destroy session
+          else{
+              $html = $this->logged_in_startpage->build_page();
+          }
+
+        }else {
+          $html = $this->logged_in_startpage->build_page();
         }
-        //2: kolla om sökning skett.
-        elseif ($this->searchview->try_search())  {
-          $html = $this->search();
+      }elseif($this->sessions->check_logged_in() == false){
+        if($this->startpage->isPOST()){
+          if ($this->startpage->try_login()) {
+            $username = $this->startpage->get_username();
+            $passw = $this->startpage->get_password();
+            $html = $this->login($username, $passw);
+          }
+          elseif ($this->registerpage->would_register()) {
+            $html = $this->register();
+          }
+        }else{
+          $html = $this->startpage->build_page();
         }
-        elseif ($this->registerpage->would_register()) {
-          $html = $this->register();
-        }
-        elseif ($this->add_report->would_add_report()) {
-          $html = $this->add_report->build_page();
-        }
-        else {
-          $startpage = new Startpage("Vallaloggen");
-          $html = $startpage->build_page();
-        }
-      }else {
-        $startpage = new Startpage("Vallaloggen");
-        $html = $startpage->build_page();
-        return $html;
+
       }
+      if ($this->searchview->try_search())  {
+          $html = $this->search();
+          }
+
       return $html;
     }
   }
