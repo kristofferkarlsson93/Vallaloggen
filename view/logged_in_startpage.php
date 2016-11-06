@@ -9,7 +9,7 @@ class Logged_in_startpage {
     <html lang = 'SV'>
       <head>
         <meta charset='UTF-8'>
-        <link rel='stylesheet' type='text/css' href='/view/style.php'>
+        <link rel='stylesheet' type='text/css' href='/view/style.css'>
         <title> Inloggad </title>
       </head>
       <body>

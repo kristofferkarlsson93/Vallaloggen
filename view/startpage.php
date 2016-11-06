@@ -34,7 +34,7 @@
       <html lang = 'SV'>
         <head>
           <meta charset='UTF-8'>
-          <link rel='stylesheet' type='text/css' href='/view/style.php'>
+          <link rel='stylesheet' type='text/css' href='/view/style.css'>
           <title> Vallaloggen.se </title>
         </head>
         <body>
