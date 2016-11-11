@@ -20,6 +20,12 @@ class Logged_in_startpage {
             <input type='submit' value='Lägg till vallarapport'>
           </form>
           </div>
+          <div id='logg_out'>
+            <form action='index.php' method='post'>
+              <input type='hidden' name='logg_out_button' value='logg_out_button'>
+              <input type='submit' value='Logga ut'>
+            </form>
+          </div>
           <div id='center_div'>
             </br></br>
             <h2>Inloggad vy </h2>

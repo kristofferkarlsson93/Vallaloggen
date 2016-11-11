@@ -7,7 +7,8 @@ todo:
   * take care of registerd user so they can logg in X
   * Fix log in function, using db. X
   * Create loged in startpage (temporary) X
-  * Researsh and implement sessions för the loged in view. X (ish)
-  * Connect controller and viewpages for add report functions. 
+  * Researsh and implement sessions för the loged in view. X
+  * Connect controller and viewpages for add report functions.X
+  * create logg out button
   * start building page to add new products
   * Add a short read me X
