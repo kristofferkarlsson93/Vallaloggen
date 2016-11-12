@@ -3,7 +3,14 @@
 
 class Logged_in_startpage {
 
-  function build_page() {
+  public function would_logg_out() {
+    if (isset($_POST["logg_out_button"])) {
+      return true;
+    }
+    return false;
+  }
+
+  public function build_page() {
     return "
     <!DOCTYPE html>
     <html lang = 'SV'>

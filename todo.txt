@@ -9,6 +9,7 @@ todo:
   * Create loged in startpage (temporary) X
   * Researsh and implement sessions för the loged in view. X
   * Connect controller and viewpages for add report functions.X
-  * create logg out button
+  * create logg out button X
+  * Fix CSS-possition-problems for the search. 
   * start building page to add new products
   * Add a short read me X

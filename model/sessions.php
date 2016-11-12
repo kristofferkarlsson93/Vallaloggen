@@ -15,6 +15,11 @@
       }
       return false;
     }
+    
+    public function logg_out() {
+      session_unset();
+      session_destroy();
+    }
   }
 
 

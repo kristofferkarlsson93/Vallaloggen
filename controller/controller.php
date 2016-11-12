@@ -75,9 +75,10 @@
         if($this->startpage->isPOST()){
           if($this->add_report->would_add_report()){
               $html = $this->add_report->build_page();
-          }//if post[logout}
-            //model->lougout som destroy session
-          else{
+          }elseif($this->logged_in_startpage->would_logg_out()){
+            $this->sessions->logg_out();
+            $html = $this->startpage->build_page();
+          }else{
               $html = $this->logged_in_startpage->build_page();
           }
 
